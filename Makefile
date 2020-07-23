@@ -28,5 +28,5 @@ help:
 	@echo "% make build"
 	@echo ""
 	@echo "Do the following when executing Maven build."
-	@echo "% make run -src [Target Source] -cmd [Target Command]" 
+	@echo "% make run src=[Target Source] cmd=[Target Command]" 
 
