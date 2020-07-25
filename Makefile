@@ -1,7 +1,8 @@
 # Set jdk and maven version.
-vendor  := oracle
-jdk_ver := jdk8
-mvn_ver := 3.6.3
+mvn_ver  := 3.6.3
+ostype   := centos7
+javatype := oracle
+jdk_ver  := jdk8
 
 
 # Set Argument.
@@ -10,18 +11,18 @@ cmd := mvn package
 
 
 # Variables used internally.
-DOCKER_IMAGE  := maven:$(mvn_ver)-$(vendor)-$(jdk_ver)
-MOUNT_SRC_DIR := $(shell readlink -f $(src))
-MOUNT_DST_DIR := /home/project
-WORK_DIR      := $(MOUNT_DST_DIR)
-EXEC_COMMAND  := $(cmd)
+DOCKER_IMAGE   := maven:$(mvn_ver)-$(ostype)-$(javatype)-$(jdk_ver)
+MOUNT_HOST_DIR := $(shell readlink -f $(src))
+MOUNT_CONT_DIR := /home/project
+WORK_DIR       := $(MOUNT_CONT_DIR)
+EXEC_COMMAND   := $(cmd)
 
 
 build: 
-	docker build ./ -t $(DOCKER_IMAGE) --build-arg MVN_VER=$(mvn_ver) -f Dockerfile.$(vendor).$(jdk_ver)
+	docker build ./ -t $(DOCKER_IMAGE) --build-arg MVN_VER=$(mvn_ver) -f Dockerfile.$(ostype).$(javatype).$(jdk_ver)
 
 run: 
-	docker run -it --rm -v $(MOUNT_SRC_DIR):$(MOUNT_DST_DIR) -w $(WORK_DIR) $(DOCKER_IMAGE) $(EXEC_COMMAND)
+	docker run -it --rm -v $(MOUNT_HOST_DIR):$(MOUNT_CONT_DIR) -w $(WORK_DIR) $(DOCKER_IMAGE) $(EXEC_COMMAND)
 
 help:
 	@echo "Do the following when creating an docker image."

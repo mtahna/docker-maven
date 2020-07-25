@@ -8,7 +8,7 @@ Do the following when creating an docker image.
 Can be executed by specifying the Maven version.
 For example, execute it for the Maven=3.6.2 version. 
 ```
-% make build mvn_ver=3.6.2 jdk_ver=jdk8
+% make build mvn_ver=3.6.2 ostype=centos7 javatype=oracle jdk_ver=jdk8
 ```
 
 # Execute Maven Build
@@ -20,7 +20,7 @@ Do the following when executing Maven build.
 Can be executed by specifying the Maven version.
 For example, execute it for the "Project" folder. 
 ```
-% make run src Project cmd="mvn package" mvn_ver=3.6.2 jdk_ver=jdk8
+% make run src=Project cmd="mvn package" mvn_ver=3.6.2 ostype=centos7 javatype=oracle jdk_ver=jdk8
 ```
 
 # Points to remember
