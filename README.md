@@ -27,4 +27,3 @@ For example, execute it for the "Project" folder.
 Maven repository cache does not remain because Docker container is deleted after build.
 Therefore, it takes build time each time.
 If this becomes a problem, it needs to be improved.
-It is necessary to stop the container after the first build and restart the container after the second build to build.

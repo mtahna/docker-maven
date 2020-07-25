@@ -7,7 +7,7 @@ jdk_ver  := jdk8
 
 # Set Argument.
 src := .
-cmd := mvn package
+cmd := mvn --version
 
 
 # Variables used internally.

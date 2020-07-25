@@ -17,7 +17,8 @@ RUN yum install -y curl tar gzip && \
     tar xzf /opt/jdk-8u131-linux-x64.tar.gz -C /opt/ && \
     rm -rf /opt/jdk-8u131-linux-x64.tar.gz && \
     ln -s /opt/jdk1.8.0_131 $JAVA_HOME && \
-    curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MVN_VER/binaries/apache-maven-$MVN_VER-bin.tar.gz | tar xzf - -C /opt/ && \
+    curl -OL http://archive.apache.org/dist/maven/maven-3/$MVN_VER/binaries/apache-maven-$MVN_VER-bin.tar.gz && \
+    tar xzf apache-maven-$MVN_VER-bin.tar.gz -C /opt/ && \
     rm -rf /opt/apache-maven-$MVN_VER-bin.tar.gz && \
     ln -s /opt/apache-maven-$MVN_VER $MVN_HOME 
 
